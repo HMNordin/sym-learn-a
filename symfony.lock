@@ -102,6 +102,9 @@
     "ocramius/proxy-manager": {
         "version": "2.7.1"
     },
+    "phing/phing": {
+        "version": "2.16.3"
+    },
     "php": {
         "version": "7.4"
     },
@@ -113,6 +116,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "propel/propel1": {
+        "version": "1.7.2"
     },
     "psr/cache": {
         "version": "1.0.1"
