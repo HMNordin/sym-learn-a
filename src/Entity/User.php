@@ -29,9 +29,15 @@ class User
      */
     private $product;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Note::class, inversedBy="users")
+     */
+    private $notes;
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,32 @@ class User
             if ($product->getUser() === $this) {
                 $product->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Note[]
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if ($this->notes->contains($note)) {
+            $this->notes->removeElement($note);
         }
 
         return $this;

@@ -31,7 +31,15 @@ class DefaultController extends AbstractController
 
         return $responseService->json([
             'request' => $request->query->get('hello'),
-            'products' => $productRepository->findAll()
+            'products' => $productRepository->findAll(),
+            'findBy' => $productRepository->findByTitleField('Test')
+        ]);
+    }
+
+    public function show(ProductRepository $productRepository)
+    {
+        return $this->render('home.html.twig', [
+            'products' => $productRepository->findByTitleField('Test')
         ]);
     }
 }
