@@ -23,8 +23,7 @@ class Product
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="product")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="products")
      */
     private $user;
 
