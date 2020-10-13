@@ -4,8 +4,5 @@ index:
 
 home:
     path: /home
-    controller: App\Controller\DefaultController::
+    controller: App\Controller\DefaultController::show
 
-login:
-    path: /login
-    controller: App\Controller\DefaultController::login

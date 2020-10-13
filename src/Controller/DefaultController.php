@@ -42,9 +42,4 @@ class DefaultController extends AbstractController
             'products' => $productRepository->findByTitleField('Test')
         ]);
     }
-
-    public function login()
-    {
-        return $this->render('security/login.html.twig');
-    }
 }
