@@ -2,12 +2,17 @@ index:
     path: /
     controller: App\Controller\DefaultController::index
 
-product-store:
+form_products_store:
     path: /products
     controller: App\Controller\DefaultController::store
     methods: POST
 
+api_products_show:
+    path: /products/{id}
+    controller: App\Controller\DefaultController::show
+    methods: GET
+
 home:
     path: /home
-    controller: App\Controller\DefaultController::show
+    controller: App\Controller\DefaultController::home
 

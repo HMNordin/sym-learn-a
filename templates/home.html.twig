@@ -6,7 +6,7 @@
             <li>Product: {{ product.title }}</li>
         {% endfor %}
     </ul>
-    <form method="post" action="{{ path('product-store') }}">
+    <form method="post" action="{{ path('form_products_store') }}">
         <label for="inputTitle">Name</label>
         <input id="inputTitle" type="text" name="title">
 

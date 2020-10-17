@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use App\Service\ResponseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +36,14 @@ class DefaultController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
-    public function show(ProductRepository $productRepository)
+    public function show(Product $product, ResponseService $responseService): Response
+    {
+        return $responseService->json([
+            'title' => $product->getTitle()
+        ]);
+    }
+
+    public function home(ProductRepository $productRepository): Response
     {
         return $this->render('home.html.twig', [
             'products' => $productRepository->findByTitleField('Test')
