@@ -6,4 +6,15 @@
             <li>Product: {{ product.title }}</li>
         {% endfor %}
     </ul>
+    <form method="post" action="{{ path('product-store') }}">
+        <label for="inputTitle">Name</label>
+        <input id="inputTitle" type="text" name="title">
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+        <button class="btn btn-lg btn-primary" type="submit">
+            Create
+        </button>
+    </form>
 {% endblock %}

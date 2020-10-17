@@ -2,6 +2,11 @@ index:
     path: /
     controller: App\Controller\DefaultController::index
 
+product-store:
+    path: /products
+    controller: App\Controller\DefaultController::store
+    methods: POST
+
 home:
     path: /home
     controller: App\Controller\DefaultController::show
