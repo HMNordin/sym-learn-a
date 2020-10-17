@@ -13,6 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    const ROLE_USER = 'ROLE_USER';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -42,14 +44,13 @@ class User implements UserInterface
     private $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Note::class, inversedBy="users")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $notes;
+    private $name;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,28 +162,14 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Note[]
-     */
-    public function getNotes(): Collection
+    public function getName(): ?string
     {
-        return $this->notes;
+        return $this->name;
     }
 
-    public function addNote(Note $note): self
+    public function setName(?string $name): self
     {
-        if (!$this->notes->contains($note)) {
-            $this->notes[] = $note;
-        }
-
-        return $this;
-    }
-
-    public function removeNote(Note $note): self
-    {
-        if ($this->notes->contains($note)) {
-            $this->notes->removeElement($note);
-        }
+        $this->name = $name;
 
         return $this;
     }
